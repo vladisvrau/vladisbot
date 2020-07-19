@@ -22,10 +22,12 @@ async def shout_out(context):
     shout_out = context.content.split("!so")[-1].strip()
     print(context.content)
     await context.send(f"Checkout {shout_out} at twitch.com/{shout_out}")
+    pass
 
 @bot.command(name='husbando')
-async def test(context):
+async def husbando(context):
     await context.send("Berry's Husbando is Daruk's descendant, Yunobo. Kappa")
+    pass
 
 @bot.command(name='discord')
 async def discord(context):
@@ -34,6 +36,7 @@ async def discord(context):
         await context.send(f"Join the Discord: {discord_link}")
     else:
         await context.send("Sorry, I couldn't find the discord link for this channel ¯\_(ツ)_/¯")
+    pass
     
 @bot.event
 async def event_ready():
