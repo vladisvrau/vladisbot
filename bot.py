@@ -2,6 +2,7 @@ from twitchio.ext import commands
 import os
 from discord import DISCORD_DIC
 import re
+import random
 
 bot = commands.Bot(
     # set up the bot
@@ -9,13 +10,44 @@ bot = commands.Bot(
     client_id=os.environ['CLIENT_ID'],
     nick=os.environ['BOT_NICK'],
     prefix=os.environ['BOT_PREFIX'],
-    initial_channels=[os.environ['CHANNEL']]
+    initial_channels=[os.environ['CHANNEL'], "qtmajestic", 'dudewood']
 )
 
 @bot.command(name='test')
 async def test(context):
     await context.send("First Try!")
     
+
+@bot.command(name='8ball')
+async def eight_ball(context):
+    options = [
+        "As I see it, yes.",
+        "Ask again later.",
+        "Better not tell you now.",
+        "Cannot predict now.",
+        "Concentrate and ask again.",
+        "Don’t count on it.",
+        "It is certain.",
+        "It is decidedly so.",
+        "Most likely.",
+        "My reply is no.",
+        "My sources say no.",
+        "Outlook not so good.",
+        "Outlook good.",
+        "Reply hazy, try again.",
+        "Signs point to yes.",
+        "Very doubtful.",
+        "Without a doubt.",
+        "Yes.",
+        "Yes – definitely.",
+        "You may rely on it.",
+    ]
+    if "the run" in context.content.split("!8ball")[-1].lower():
+        answer = "yes"
+    else:
+        answer = options[random.randint(0, len(options)-1)]
+
+    await context.send(answer)
 
 @bot.command(name='so')
 async def shout_out(context):
@@ -83,6 +115,9 @@ async def event_message(context):
     if any(i in context.content.lower() for i in ["greetings vladisbot", 'greetings chat']):
         await context.channel.send(f"Greetings, @{context.author.name}! *tips hat*")
         pass
+
+    if re.compile(r".*(?<![\w\d])esc(?![\w\d]+).*").match(context.content.lower()):
+        await context.channel.send(f"ESC BAD PunOko")
 
     if re.compile(r".*(?<![\w\d])brb(?![\w\d]+).*").match(context.content.lower()):
         await context.channel.send(f"see you later, @{context.author.name}! have a good one! <3 <3 <3 <3")
