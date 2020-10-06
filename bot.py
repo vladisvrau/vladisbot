@@ -3,21 +3,31 @@ import os
 from discord import DISCORD_DIC
 import re
 import random
-
+import json
 bot = commands.Bot(
     # set up the bot
     irc_token=os.environ['TMI_TOKEN'],
     client_id=os.environ['CLIENT_ID'],
     nick=os.environ['BOT_NICK'],
     prefix=os.environ['BOT_PREFIX'],
-    initial_channels=[os.environ['CHANNEL'], "qtmajestic", 'dudewood']
+    initial_channels=[os.environ['CHANNEL'], "qtmajestic", 'evan_edits', "scorpionsen", "strawhat_deku", "alexandralynne", 'PancakeDAWGz', "strike_storm", "TallesThomas", "toogoodmules", "UsujioTarako"]
 )
 
 @bot.command(name='test')
 async def test(context):
     await context.send("First Try!")
-    
 
+@bot.command(name='race')
+async def race(context):
+    with open("runners.json") as _file: 
+        runners = json.load(_file)
+        message = " | ".join([f"{i}" for i in runners if i.lower() != str(context.channel).lower()])
+        _multitwitch = "/".join(runners)
+        multitwitch = f"https://multitwitch.tv/{_multitwitch}"
+        join_us_ = "You're welcome to join us in CBF's discord: https://discord.gg/jYmzWd9"
+        final = f"We're doing races to encourage no-resets and getting used to running against other people. I'm running with {message} . Watch us on multitwitch: {multitwitch} .  {join_us_}"
+        await context.send(final)
+    
 @bot.command(name='8ball')
 async def eight_ball(context):
     options = [
@@ -52,7 +62,7 @@ async def eight_ball(context):
 @bot.command(name='so')
 async def shout_out(context):
     shout_out = context.content.split("!so")[-1].strip()
-    print(context.content)
+    # print(context.content)
     await context.send(f"Checkout {shout_out} at twitch.com/{shout_out}")
     pass
 
@@ -69,7 +79,29 @@ async def discord(context):
     else:
         await context.send("Sorry, I couldn't find the discord link for this channel ¯\_(ツ)_/¯")
     pass
-    
+
+@bot.command(name='partytime')
+async def partytime(context):
+    await context.send("pepeD let's pepeD party pepeD people pepeD")
+
+
+@bot.command(name='arrest')
+async def arrest(context):
+    prisoner = context.content.split("!arrest")[-1].strip()
+    await context.send(f"STOP! YOU'VE VIOLATED THE LAW! PAY THE COURT A FINE OR SERVE YOUR SENTENCE! YOUR STOLEN GOODS ARE NOW FORFEIT, {prisoner.upper()}!")
+    pass
+
+@bot.command(name='bonk')
+async def bonk(context):
+    prisoner = context.content.split("!bonk")[-1].strip()
+    await context.send(f"{prisoner} has been bonked")
+    pass
+
+@bot.command(name='love')
+async def love(context):
+    await context.send(f"alexan90Heart alexan90Heart alexan90Heart alexan90Heart alexan90Heart alexan90Heart alexan90Heart")
+    pass
+
 @bot.event
 async def event_ready():
     print(f"{os.environ['BOT_NICK']} is online!")
@@ -92,6 +124,9 @@ async def event_message(context):
 
     if 'pogu vladisbot' in context.content.lower() or 'pogyou vladisbot' in context.content.lower():
         await context.channel.send("PogMe? nah fam, PogYou")
+
+    if 'Wanna become famous? Buy followers, primes and views on bigfollows*com (bigfollows . com)!'.lower() in context.content.lower():
+        await context.channel.ban(f"{context.author.name}") 
 
     greets = [
         "hello vladisbot",
