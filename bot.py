@@ -10,7 +10,7 @@ bot = commands.Bot(
     client_id=os.environ['CLIENT_ID'],
     nick=os.environ['BOT_NICK'],
     prefix=os.environ['BOT_PREFIX'],
-    initial_channels=[os.environ['CHANNEL'], "qtmajestic", 'evan_edits', "scorpionsen", "strawhat_deku", "alexandralynne", 'PancakeDAWGz', "strike_storm", "TallesThomas", "toogoodmules", "UsujioTarako"]
+    initial_channels=[os.environ['CHANNEL'], "gd_gurt", 'cee_bee_eff', "scorpionsen", "strawhat_deku", "alexandralynne", 'PancakeDAWGz', "strike_storm", "TallestThomas", "toogoodmules", "UsujioTarako"]
 )
 
 @bot.command(name='test')
