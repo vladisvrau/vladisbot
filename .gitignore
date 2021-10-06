@@ -1,5 +1,6 @@
 data.py
 .env
 .idea
+.vscode
 discord.py
 runners.json
