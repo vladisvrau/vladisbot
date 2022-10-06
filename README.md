@@ -26,6 +26,9 @@ CHANNEL=main channel name for the bot to join
 
 - `TMI_TOKEN` and `CLIENT_ID` are variables generated at the [Twitch developer thingy](https://dev.twitch.tv/console/apps/create)
 
+## Docker Commands
+
+docker build 
 
 ## misc
 
