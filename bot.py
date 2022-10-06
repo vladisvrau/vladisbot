@@ -76,10 +76,10 @@ async def shout_out(context):
     await context.send(f"Checkout {shout_out} at twitch.com/{shout_out}")
     pass
 
-# @bot.command(name='husbando')
-# async def husbando(context):
-#     await context.send("Berry's Husbando is Daruk's descendant, Yunobo. Kappa")
-#     pass
+@bot.command(name='husbando')
+async def husbando(context):
+    await context.send("Berry's Husbando is Daruk's descendant, Yunobo. Kappa")
+    pass
 
 # @bot.command(name='discord')
 # async def discord(context):
