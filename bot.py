@@ -68,13 +68,13 @@ async def eight_ball(context):
 
     await context.send(answer)
 
-# @bot.command(name='so')
-# async def shout_out(context):
-#     shout_out = context.content.split("!so")[-1].strip()
-#     shout_out = shout_out.replace("@", "")
-#     # print(context.content)
-#     await context.send(f"Checkout {shout_out} at twitch.com/{shout_out}")
-#     pass
+@bot.command(name='shoutout')
+async def shout_out(context):
+    shout_out = context.content.split("!shoutout")[-1].strip()
+    shout_out = shout_out.replace("@", "")
+    print(context.content)
+    await context.send(f"Checkout {shout_out} at twitch.com/{shout_out}")
+    pass
 
 # @bot.command(name='husbando')
 # async def husbando(context):
